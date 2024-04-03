@@ -17,32 +17,12 @@
     <div class="container">
         
         <div class="row">
-            <img src="{{ Vite::asset('resources/images/logo.png') }}" class="logo" alt="logo">
+            <img src="{{ Vite::asset('resources/images/logo.png') }}" class="logo-home" alt="logo">
         </div>
         <div class="row">
-            <div class="col-md-4  myForm d-none">
-                <div class="login-form bg-light mt-4 p-4">
-                    <form action="" method="" class="row g-3">
-                        <h4 class="text-center">Bem vindo</h4>
-                        <div class="col-12">
-                            <label>Usuário</label>
-                            <input type="text" name="username" class="form-control" placeholder="Informe o nome do usuário">
-                        </div>
-                        <div class="col-12">
-                            <label>Senha</label>
-                            <input type="password" name="password" class="form-control" placeholder="Informe a senha">
-                        </div>
-                        <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="rememberMe">
-                                <label class="form-check-label" for="rememberMe"> Lembrar Senha</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-dark float-end">Login</button>
-                        </div>
-                    </form>
-                </div>
+            <div class="col-md-4  m-auto text-center">
+                <h4 class="mb-4">Bem vindo ao teste do falepaco, clique abaixo para fazer o login.</h4>
+                <a class="btn btn-primary" href=/login>Login</a>
             </div>
         </div>
     </div>

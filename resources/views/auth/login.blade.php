@@ -2,13 +2,13 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <div class="container">
+    <div class="container ">
         <div class="row">
             <img src="{{ Vite::asset('resources/images/logo.png') }}" class="logo" alt="logo">
         </div>
         <div class="row">
-            <div class="col-md-4  myForm">
-                <div class="login-form bg-light mt-4 p-4">
+            <div class="col-md-4 bg-white myForm">
+                <div class="login-form  mt-4 p-4">
                     <form method="POST" action="{{ route('login') }}" class="row g-3">
                         @csrf
                         <h4 class="text-center">Bem vindo</h4>
