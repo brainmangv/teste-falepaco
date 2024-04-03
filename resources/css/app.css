@@ -1,0 +1,25 @@
+@import 'bootstrap';
+.myForm {
+    min-width: 500px;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    margin-left: auto;
+    margin-right: auto;
+}
+.logo{
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.myForm > label {
+    font-weight: bold;    
+}
+
+  @media (max-width: 500px) {
+    .myForm {
+      min-width: 90%;
+    }
+  }
