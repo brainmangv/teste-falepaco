@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="shortcut icon" href="{{ Vite::asset('resources/images/favicon.ico')}}" type="image/x-icon">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
@@ -14,6 +14,7 @@
 
     <!-- Scripts -->
     @vite('resources/css/app.css')
+     @livewireStyles
 </head>
 
 <body class="font-sans antialiased">
@@ -50,6 +51,7 @@
         </div>
     </div>
     @vite('resources/js/app.js')
+     @livewireScripts
 </body>
 
 </html>

@@ -1,6 +1,7 @@
-<table class="table table-striped mt-2 table-bordered">
+<div>
+    <table class="table table-striped mt-2 table-bordered">
     <thead>
-        <tr>
+        <tr class="table-dark">
             <th scope="col">#</th>
             <th scope="col">Data</th>
             <th scope="col">De</th>
@@ -31,3 +32,4 @@
         </tr>
     </tbody>
 </table>
+</div>

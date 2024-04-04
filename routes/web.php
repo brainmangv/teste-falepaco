@@ -28,4 +28,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get("/rate", "App\Http\Controllers\ExchangeRateController@getExchangeRate");
 require __DIR__.'/auth.php';
