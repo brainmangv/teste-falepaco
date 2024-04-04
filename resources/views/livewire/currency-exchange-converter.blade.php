@@ -5,27 +5,26 @@
     </div>
     <div class="d-md-flex">
         <div class="exchangediv">
-            <select name="from" id="from" class="exchangeselect" title="from">
+            <select wire:model.live.debounce.500ms='fromCurrencyCode' class="exchangeselect" title="from">
                 <option value="BRL">BRL</option>
                 <option value="USD">USD</option>
                 <option value="CAD">CAD</option>
             </select>
             <br>
-            <input type="text" wire:model.live.debounce.500ms="fromCurrency" class="exchangeinput"
+            <input type="text" wire:model.live.debounce.500ms="fromCurrencyAmount" class="exchangeinput"
                 data-input-type="numeric">
-            {{ $fromValue }}
         </div>
         <div class="text-center">
             <x-swap-icon />
         </div>
         <div class="exchangediv">
-            <select name="to" id="to" title="to" class="exchangeselect">
+            <select class="exchangeselect" wire:model.live.debounce.500ms='toCurrencyCode' title="to">
                 <option value="BRL">BRL</option>
                 <option value="USD">USD</option>
                 <option value="CAD">CAD</option>
             </select>
             <br>
-            <input type="text" wire:model="toCurrency" class="exchangeinput" readonly>
+            <input type="text" wire:model="toCurrencyAmount" class="exchangeinput" readonly>
         </div>
     </div>
 </div>

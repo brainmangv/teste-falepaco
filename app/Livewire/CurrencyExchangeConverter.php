@@ -2,24 +2,43 @@
 
 namespace App\Livewire;
 
+use App\Models\Currency;
 use NumberFormatter;
 use Livewire\Component;
 use Whoops\Exception\Formatter;
+use App\Services\ExchangeRateService;
 
 class CurrencyExchangeConverter extends Component
 {
     public  float $fromValue;
-    public  string $fromCurrency;
-    public  string $toCurrency;
-    public string $currFromTxt = '1,34 US Dollar =';
-    public string $currToTxt = '6,75 Brazilian Real';
-    public string $lastUpdate;
+    public  string $fromCurrencyAmount;
+    public  string $toCurrencyAmount;
+    
+    public string $fromCurrencyCode ="BRL";
+    public string $toCurrencyCode ="USD";
+    
+    public  string $currFromTxt = '';
+    public  string $currToTxt = '';
+    public  string $lastUpdate;
+    public string $debug;
+    protected ExchangeRateService $service;
+    private array $currencies=['BRL'=>'Brazilian Real', 'USD'=>'US Dollar', 'CAD'=>'Canadian Dollar'];
+    public function boot(ExchangeRateService $service)
+    {
+        $this->service = $service;
+    }
 
     public function updated($propertyName)
     {
-        if ($propertyName == 'fromCurrency') {
+        if ($propertyName == 'fromCurrencyAmount') {
             $num = NumberFormatter::create('pt_BR', NumberFormatter::DECIMAL);
-            $this->fromValue = $num->parse($this->fromCurrency);
+            $this->fromValue = $num->parse($this->fromCurrencyAmount);
+            $result=$this->service->getExchangeRate($this->fromCurrencyCode, $this->toCurrencyCode, $this->fromValue);
+            if ($result['success']) {
+                $this->toCurrencyAmount=$num->format($result['result']);
+                $this->currFromTxt=$this->fromCurrencyAmount.' '.$this->currencies[$this->fromCurrencyCode].' =';
+                $this->currToTxt=$this->toCurrencyAmount.' '.$this->currencies[$this->toCurrencyCode];
+            }
         }
     }
     public function render()
