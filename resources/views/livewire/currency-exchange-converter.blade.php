@@ -14,7 +14,7 @@
             <input type="text" wire:model.live.debounce.500ms="fromCurrencyAmount" class="exchangeinput"
                 data-input-type="numeric">
         </div>
-        <div class="text-center">
+        <div class="text-center" wire:click='swapCurrencies'>
             <x-swap-icon />
         </div>
         <div class="exchangediv">

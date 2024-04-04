@@ -10,9 +10,8 @@ use App\Services\ExchangeRateService;
 
 class CurrencyExchangeConverter extends Component
 {
-    public  float $fromValue;
-    public  string $fromCurrencyAmount;
-    public  string $toCurrencyAmount;
+    public  string $fromCurrencyAmount ='';
+    public  string $toCurrencyAmount ='';
     
     public string $fromCurrencyCode ="BRL";
     public string $toCurrencyCode ="USD";
@@ -30,10 +29,11 @@ class CurrencyExchangeConverter extends Component
 
     public function updated($propertyName)
     {
-        if ($propertyName == 'fromCurrencyAmount') {
+        if ($this->fromCurrencyCode != $this->toCurrencyCode && $this->fromCurrencyAmount != '') {
             $num = NumberFormatter::create('pt_BR', NumberFormatter::DECIMAL);
-            $this->fromValue = $num->parse($this->fromCurrencyAmount);
-            $result=$this->service->getExchangeRate($this->fromCurrencyCode, $this->toCurrencyCode, $this->fromValue);
+            $fromValue = $num->parse($this->fromCurrencyAmount);
+            $result=$this->service->getExchangeRate($this->fromCurrencyCode, $this->toCurrencyCode, $fromValue);
+           
             if ($result['success']) {
                 $this->toCurrencyAmount=$num->format($result['result']);
                 $this->currFromTxt=$this->fromCurrencyAmount.' '.$this->currencies[$this->fromCurrencyCode].' =';
@@ -41,6 +41,15 @@ class CurrencyExchangeConverter extends Component
             }
         }
     }
+    public function swapCurrencies(){
+
+        $from=$this->fromCurrencyCode;
+        $to=$this->toCurrencyCode;
+        $this->fromCurrencyCode=$to;
+        $this->toCurrencyCode=$from;
+        $this->updated('fromCurrencyAmount');
+    }
+
     public function render()
     {
         return view('livewire.currency-exchange-converter');
