@@ -37,7 +37,7 @@ class CurrencyExchangeConverter extends Component
                 $this->toCurrencyAmount=$num->format($result['result']);
                 $this->currFromTxt=$this->fromCurrencyAmount.' '.$this->currencies[$this->fromCurrencyCode].' =';
                 $this->currToTxt=$this->toCurrencyAmount.' '.$this->currencies[$this->toCurrencyCode];
-                $this->addConversionHistoric($result['info']['rate']);
+                $this->addConversionHistoric($fromValue,$result['info']['rate']);
             }
         }
     }
@@ -49,13 +49,12 @@ class CurrencyExchangeConverter extends Component
         $this->toCurrencyCode=$from;
         $this->updated();
     }
-    private function addConversionHistoric($rate){
+    private function addConversionHistoric($fromValue,$rate){
         Conversion::create([
             'from' => $this->fromCurrencyCode,
             'to' => $this->toCurrencyCode,
-            'amount' => $this->fromCurrencyAmount,
-            'rate' => $rate,
-            'date' => now()
+            'amount' => $fromValue,
+            'rate' => $rate
         ]);
         $this->dispatch('currency-exchange-table:refresh');
     }

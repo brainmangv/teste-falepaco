@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->char('from',3);
             $table->char('to',3);
-            $table->float('rate',5);
-            $table->float('amount');
+            $table->float('rate',10,5);
+            $table->float('amount',10,5);
             $table->timestamps();
         });
     }
