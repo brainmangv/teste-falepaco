@@ -14,7 +14,7 @@
                         <h4 class="text-center">Bem vindo</h4>
                         <div class="col-12">
                             <label>Usuário</label>
-                            <input type="text" name="email" class="form-control" placeholder="Informe o nome do usuário" :value="old('email')" required>
+                            <input type="text" name="email" class="form-control" placeholder="Informe o email do usuário" :value="old('email')" required>
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
                         <div class="col-12">

@@ -1,7 +1,4 @@
 @import 'bootstrap';
-body{
-    background-color: #f5f5f5;
-}
 
 .myForm {
     min-width: 500px;
@@ -23,13 +20,60 @@ body{
     margin-right: auto;
     margin-top: 50px;
 }
-
+.logo-dashboard{
+    width: 150px;
+}
+.navbar{
+    border-bottom: 2px solid #2480be!important;
+}
 .myForm  label {
     font-weight: 600;    
 }
 
+.navbar .navbar-toggler {
+    top: .25rem;
+    right: 1rem;
+    color:gray;
+}
   @media (max-width: 500px) {
     .myForm {
       min-width: 90%;
     }
   }
+  .exchangediv{
+    flex: 1 0 0;
+  }
+  .exchangeselect{
+    width: 100%;
+    height: 32px;
+    background-color: #dee2e6;
+  }
+  .exchangeinput{
+    width: 100%;
+    font-size: 24px;
+    border-color: #ddd;
+    outline: none;
+    border-width: 1px;
+    border-style: solid;
+  }
+  
+  .swapIcon{
+    width: 20px;
+    height: 20px;
+  }
+  .currfrtxt {
+    font-size:18px;
+    color: grey;
+    padding-bottom:4px;
+}
+
+.currtotxt {
+    font-size:28px;
+    line-height:38px;
+    padding-bottom:8px;
+}
+
+.footnote {
+    font-size:11px;
+    color:grey;
+}
