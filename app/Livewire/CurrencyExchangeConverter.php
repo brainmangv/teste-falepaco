@@ -27,7 +27,7 @@ class CurrencyExchangeConverter extends Component
         $this->service = $service;
     }
 
-    public function updated($propertyName)
+    public function updated()
     {
         if ($this->fromCurrencyCode != $this->toCurrencyCode && $this->fromCurrencyAmount != '') {
             $num = NumberFormatter::create('pt_BR', NumberFormatter::DECIMAL);
@@ -47,7 +47,7 @@ class CurrencyExchangeConverter extends Component
         $to=$this->toCurrencyCode;
         $this->fromCurrencyCode=$to;
         $this->toCurrencyCode=$from;
-        $this->updated('fromCurrencyAmount');
+        $this->updated();
     }
 
     public function render()

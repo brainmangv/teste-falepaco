@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->char("code",3);
             $table->string("name");
-            $table->timestamps();
         });
     }
 
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_symbols');
+        Schema::dropIfExists('currencies');
     }
 };

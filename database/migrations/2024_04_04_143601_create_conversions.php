@@ -17,7 +17,6 @@ return new class extends Migration
             $table->char('from',3);
             $table->char('to',3);
             $table->float('rate');
-            $table->timestamps();
         });
     }
 
