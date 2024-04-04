@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('conversions', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('date');
             $table->char('from',3);
             $table->char('to',3);
-            $table->float('rate');
+            $table->float('rate',5);
+            $table->float('amount');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_conversions');
+        Schema::dropIfExists('conversions');
     }
 };

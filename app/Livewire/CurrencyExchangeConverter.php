@@ -2,10 +2,9 @@
 
 namespace App\Livewire;
 
-use App\Models\Currency;
+use App\Models\Conversion;
 use NumberFormatter;
 use Livewire\Component;
-use Whoops\Exception\Formatter;
 use App\Services\ExchangeRateService;
 
 class CurrencyExchangeConverter extends Component
@@ -38,6 +37,7 @@ class CurrencyExchangeConverter extends Component
                 $this->toCurrencyAmount=$num->format($result['result']);
                 $this->currFromTxt=$this->fromCurrencyAmount.' '.$this->currencies[$this->fromCurrencyCode].' =';
                 $this->currToTxt=$this->toCurrencyAmount.' '.$this->currencies[$this->toCurrencyCode];
+                $this->addConversionHistoric($result['info']['rate']);
             }
         }
     }
@@ -49,7 +49,16 @@ class CurrencyExchangeConverter extends Component
         $this->toCurrencyCode=$from;
         $this->updated();
     }
-
+    private function addConversionHistoric($rate){
+        Conversion::create([
+            'from' => $this->fromCurrencyCode,
+            'to' => $this->toCurrencyCode,
+            'amount' => $this->fromCurrencyAmount,
+            'rate' => $rate,
+            'date' => now()
+        ]);
+        $this->dispatch('currency-exchange-table:refresh');
+    }
     public function render()
     {
         return view('livewire.currency-exchange-converter');

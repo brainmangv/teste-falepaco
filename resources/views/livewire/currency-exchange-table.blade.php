@@ -6,30 +6,20 @@
             <th scope="col">Data</th>
             <th scope="col">De</th>
             <th scope="col">Para</th>
-            <th scope="col">Valor</th>
+            <th scope="col">Taxa</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-        </tr>
+        @foreach ($conversions as $conversion) 
+            <tr>
+                <th scope="row">{{$conversion->id}}</th>
+                <td>{{$conversion->created_at}}</td>
+                <td>{{$conversion->amount . '  '. $conversion->from}}</td>
+                {{-- <td>{{$conversion->value * $conversion->rate . '  '.$conversion->to}}</td> --}}
+                <td>{{$conversion->toAmount . '  '.$conversion->to}}</td>
+                <td>{{$conversion->rate}}</td>
+            </tr>    
+        @endforeach
     </tbody>
 </table>
 </div>
