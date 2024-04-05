@@ -38,6 +38,7 @@ class CurrencyExchangeConverter extends Component
                 $this->currFromTxt=$this->fromCurrencyAmount.' '.$this->currencies[$this->fromCurrencyCode].' =';
                 $this->currToTxt=$this->toCurrencyAmount.' '.$this->currencies[$this->toCurrencyCode];
                 $this->addConversionHistoric($fromValue,$result['info']['rate']);
+                $this->lastUpdate=now()->toDateTimeString();
             }
         }
     }
