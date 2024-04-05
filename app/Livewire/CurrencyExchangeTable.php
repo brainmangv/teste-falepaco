@@ -13,6 +13,9 @@ class CurrencyExchangeTable extends Component
     protected $listeners = ['currency-exchange-table:refresh' => 'refresh'];
     public function render()
     {
-        return view('livewire.currency-exchange-table', ['conversions' => Conversion::paginate(10)]);
+        // return all conversion order by date_created_at desc
+
+        return view('livewire.currency-exchange-table', ['conversions' => 
+        Conversion::orderBy('created_at', 'desc')->paginate(10)]);
     }
 }

@@ -14,7 +14,7 @@
 
     <!-- Scripts -->
     @vite('resources/css/app.css')
-     @livewireStyles
+    @livewireStyles
 </head>
 
 <body class="font-sans antialiased">
@@ -51,7 +51,7 @@
         </div>
     </div>
     @vite('resources/js/app.js')
-     @livewireScripts
+     {{-- @livewireScripts --}}
 </body>
 
 </html>
